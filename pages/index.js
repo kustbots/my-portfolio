@@ -30,7 +30,7 @@ export default function Home() {
         <div className="buttons">
           <a className="btn" href="https://prashant-portfolio.kustbotsweb.workers.dev/" target="_blank">Portfolio</a>
           <a className="btn" href="https://github.com/kustbots" target="_blank">GitHub</a>
-          <a className="btn" href="https://www.linkedin.com/in/prashant-sahlot/" target="_blank">LinkedIn</a>
+          <a className="btn" href="https://www.linkedin.com/in/kust-bots/" target="_blank">LinkedIn</a>
         </div>
       </main>
       <style jsx>{`
