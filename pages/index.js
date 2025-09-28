@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 export default function Home() {
   useEffect(() => {
+    // Mouse hover effect for buttons
     const buttons = document.querySelectorAll(".btn");
     buttons.forEach(btn => {
       btn.addEventListener("mousemove", (e) => {
@@ -18,55 +19,74 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Prashant Sahlot Portfolio</title>
+        <title>Prashant Sahlot | Portfolio Hub</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Welcome to My Hub</h1>
+        <div className="overlay"></div>
+        <h1 className="title">Prashant Sahlot</h1>
+        <p className="subtitle">Full Stack & Backend Engineer | Distributed Systems | Cloud & Automation</p>
         <div className="buttons">
-          <a className="btn" href="https://prashant-portfolio-main.com" target="_blank">Portfolio</a>
-          <a className="btn" href="https://github.com/prashant-sahlot" target="_blank">GitHub</a>
+          <a className="btn" href="https://prashant-portfolio.kustbotsweb.workers.dev/" target="_blank">Portfolio</a>
+          <a className="btn" href="https://github.com/kustbots" target="_blank">GitHub</a>
           <a className="btn" href="https://www.linkedin.com/in/prashant-sahlot/" target="_blank">LinkedIn</a>
-          <a className="btn" href="mailto:prashantsahlot@outlook.com">Contact</a>
         </div>
       </main>
       <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
         main {
           height: 100vh;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-          color: white;
-          text-align: center;
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background: radial-gradient(circle at top left, #1e3c72, #2a5298);
           overflow: hidden;
+          font-family: 'Montserrat', sans-serif;
+          color: #fff;
+          position: relative;
+          text-align: center;
         }
-        h1 {
+        .overlay {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: url('https://images.unsplash.com/photo-1605902711622-cfb43c443fd7?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+          opacity: 0.1;
+          z-index: 0;
+        }
+        .title {
           font-size: 3rem;
-          margin-bottom: 50px;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+          z-index: 1;
+          animation: fadeInDown 1s ease forwards;
+        }
+        .subtitle {
+          font-size: 1.2rem;
+          margin-bottom: 3rem;
+          z-index: 1;
           animation: fadeIn 2s ease forwards;
         }
         .buttons {
           display: flex;
-          flex-direction: column;
-          gap: 20px;
+          flex-direction: row;
+          gap: 25px;
+          z-index: 1;
         }
         .btn {
           position: relative;
-          padding: 20px 50px;
-          font-size: 1.2rem;
-          font-weight: bold;
-          color: white;
+          padding: 15px 45px;
+          font-size: 1rem;
+          font-weight: 700;
+          color: #fff;
           text-decoration: none;
-          border: 2px solid white;
           border-radius: 50px;
+          border: 2px solid #fff;
           overflow: hidden;
-          background: transparent;
+          transition: 0.4s ease;
           cursor: pointer;
-          transition: transform 0.2s, color 0.3s;
         }
         .btn::before {
           content: '';
@@ -78,7 +98,7 @@ export default function Home() {
           height: 0;
           background: rgba(255, 255, 255, 0.2);
           border-radius: 50%;
-          transition: width 0.3s ease, height 0.3s ease;
+          transition: 0.3s ease;
           z-index: 0;
         }
         .btn:hover::before {
@@ -86,13 +106,22 @@ export default function Home() {
           height: 300px;
         }
         .btn:hover {
-          color: #0f2027;
+          color: #1e3c72;
+          background: rgba(255,255,255,0.15);
           transform: scale(1.05);
-          background: rgba(255,255,255,0.1);
+        }
+        @keyframes fadeInDown {
+          0% {opacity: 0; transform: translateY(-50px);}
+          100% {opacity: 1; transform: translateY(0);}
         }
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-30px);}
-          to { opacity: 1; transform: translateY(0);}
+          0% {opacity: 0;}
+          100% {opacity: 1;}
+        }
+        @media (max-width: 768px) {
+          .buttons {
+            flex-direction: column;
+          }
         }
       `}</style>
     </>
